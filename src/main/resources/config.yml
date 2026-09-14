@@ -1,0 +1,77 @@
+match:
+  min-players: 1
+  hunter-count: 4
+  auto-fill-bots: false
+  match-time-seconds: 1200
+
+monster:
+  starting-stage: 1
+
+  evolution-needed:
+    stage-2: 100
+    stage-3: 250
+
+  # 必要Evolutionに到達しても自動では進化しない。
+  # 通常プレイでは9番スロットのEVOLVEスキルを右クリックして進化する。
+  # /evolve evolve は管理者・デバッグ用として残す。開始後はキャンセル不可。
+  # 進化中は開始地点に固定され、WASD・ジャンプ・ノックバックで移動できない。視点だけは自由。
+  evolution-time-seconds:
+    stage-2: 8
+    stage-3: 12
+
+
+  # 通常プレイヤーを100%としたMonsterの基本移動速度。
+  movement-speed:
+    stage-1: 1.20
+    stage-2: 1.25
+    stage-3: 1.30
+
+  # Evolve風の2層耐久。
+  # health = 本体HP（基本的に捕食では回復しない）
+  # armor  = 外皮（捕食で回復する）
+  vitals:
+    stage-1:
+      health: 100.0
+      armor: 50.0
+    stage-2:
+      health: 140.0
+      armor: 80.0
+    stage-3:
+      health: 180.0
+      armor: 120.0
+    # 捕食で得たEvolution 1ポイントにつき回復する外皮量
+    armor-per-evolution: 1.0
+
+  # 通常攻撃は前方扇形。widthではなくarc-degreesで角度を指定する。
+  attack:
+    cooldown-ticks: 16
+    stage-1:
+      damage: 6.0
+      range: 3.2
+      arc-degrees: 100.0
+      height: 2.8
+    stage-2:
+      damage: 9.0
+      range: 4.2
+      arc-degrees: 110.0
+      height: 3.8
+    stage-3:
+      damage: 12.0
+      range: 5.5
+      arc-degrees: 120.0
+      height: 5.2
+
+wildlife:
+  test-spawn-count: 6
+  corpse-expire-seconds: 120
+  feed-range: 3.5
+  evolution:
+    pig: 20
+    cow: 25
+    sheep: 20
+    chicken: 10
+
+ui:
+  # Client MODの専用HUDを使うため、通常はサイドバーを表示しない。
+  # scoreboard自体はClient MODへのrole/stage同期に引き続き使用する。
+  sidebar: false
